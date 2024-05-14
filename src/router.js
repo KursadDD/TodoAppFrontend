@@ -1,35 +1,34 @@
 import { createRouter, createWebHistory } from "vue-router";
 import MemberList from "@/views/MemberList"
-import MemberCreate from "@/views/MemberCreate"
+import MemberForm from "@/views/MemberForm"
 import TodoList from "@/views/TodoList"
-import TodoCreate from "@/views/TodoCreate"
+import TodoForm from "@/views/TodoForm"
 import TeamList from "@/views/TeamList"
-import TeamCreate from "@/views/TeamCreate"
-
+import TeamForm from "@/views/TeamForm"
 const routes = [
     {
         path: "/member-list",
         component: MemberList,
     },
     {
-        path: "/member-create",
-        component: MemberCreate,
+        path: "/member-form",
+        component: MemberForm,
     },
     {
         path: "/todo-list",
         component: TodoList,
     },
     {
-        path: "/todo-create",
-        component: TodoCreate,
+        path: "/todo-form",
+        component: TodoForm,
     },
     {
         path: "/team-list",
         component: TeamList,
     },
     {
-        path: "/team-create",
-        component: TeamCreate,
+        path: "/team-form",
+        component: TeamForm,
     }
 ]
 

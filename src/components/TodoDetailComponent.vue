@@ -28,7 +28,7 @@ export default {
     }
   },
   async mounted() {
-    const { data } = await this.$axios.get(`api/Todos/getByIdWithMember?id=${this.todoId}`);
+    const { data } = await this.$axios.get(`https://localhost:7056/api/Todos/getByIdWithMember?id=${this.todoId}`);
     this.todoDetail = data
   },
 };

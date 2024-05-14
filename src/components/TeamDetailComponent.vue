@@ -13,7 +13,6 @@
             <th scope="col">Surname</th>
             <th scope="col">Is TeamLead</th>
             <th scope="col">Created Date</th>
-            <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -23,15 +22,6 @@
             <td>{{ member.surname }}</td>
             <td>{{ member.isTeamLead }}</td>
             <td>{{ member.createdDate }}</td>
-            <td>
-              <button
-                type="button"
-                class="btn btn-primary btn-sm"
-                @click="detail(team)"
-              >
-                Detail
-              </button>
-            </td>
           </tr>
         </tbody>
       </table>
@@ -51,7 +41,7 @@ export default {
   },
   async mounted() {
     const { data } = await this.$axios.get(
-      `api/Members/getListByTeamId?id=${this.team.id}`
+      `https://localhost:7056/api/Members/getListByTeamId?id=${this.team.id}`
     );
     this.teamMembers = data;
   },

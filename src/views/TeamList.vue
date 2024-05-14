@@ -1,10 +1,10 @@
 <template>
   <div class="mx-auto" style="width: 80%">
     <div v-if="!showDetail">
-      <router-link to="/team-create" class="btn btn-outline-primary m-4"
+      <router-link to="/team-form" class="btn btn-outline-primary m-4"
         >Create Team</router-link
       >
-      <table class="table table-striped">
+      <table v-if="teams.length>0" class="table table-striped">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -25,6 +25,20 @@
                 @click="detail(team)"
               >
                 Detail
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm m-1"
+                @click="edit(team.id)"
+              >
+                Edit
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger btn-sm m-1"
+                @click="deleted(team.id)"
+              >
+                Delete
               </button>
             </td>
           </tr>
@@ -63,12 +77,21 @@ export default {
 
   methods: {
     async getTeamList() {
-      const { data } = await this.$axios.get("api/Teams/getList");
+      const { data } = await this.$axios.get(
+        "https://localhost:7056/api/Teams/getList"
+      );
       this.teams = data;
     },
     detail(team) {
       this.showDetail = true;
       this.team = team;
+    },
+    edit(id) {
+      this.$router.push(`/team-form?id=${id}`);
+    },
+    async deleted(id) {
+      await this.$axios.delete(`https://localhost:7056/api/Teams?id=${id}`);
+      this.getTeamList();
     },
   },
 };
